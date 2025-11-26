@@ -10,7 +10,6 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("extract_logger")
 
 MODEL_NAME = "Qwen/Qwen3-4B-Instruct-2507"
-# [중요] 프롬프트 파일 내용이 v2로 업데이트되어야 합니다.
 DEFAULT_PROMPT_PATH = "./prompts/1126_prompt(en).txt" 
 
 # -------------------------------
@@ -33,9 +32,6 @@ def load_prompt(path: str) -> str:
         return f.read()
 
 def extract_json_blocks(text: str):
-    """
-    LLM 응답 텍스트에서 JSON 블록을 찾아 파싱합니다.
-    """
     stack, start = [], None
     for i, ch in enumerate(text):
         if ch in "{[":
